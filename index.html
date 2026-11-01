@@ -1,24 +1,27 @@
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BreathEasy - A simple breathing exercise device to help you build a mindful breathing habit.">
-  <title>BreathEasy | Breathe with Ease</title>
+  <meta name="theme-color" content="#e9eee5">
+  <title>BreathEasy | Breathe Better. Feel Better.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --cream: #f7f5ee;
-      --cream-dark: #eeece2;
-      --sage: #a8b9a2;
-      --sage-dark: #718873;
-      --blue: #dce8e8;
-      --teal: #244b4b;
-      --ink: #263b39;
-      --muted: #687a73;
-      --white: #fffefa;
-      --line: rgba(36, 75, 75, .14);
+      --cream: #f8f7f1;
+      --sage: #dce7d9;
+      --sage-dark: #829982;
+      --teal: #244f4b;
+      --teal-light: #376d67;
+      --blue: #dce8eb;
+      --text: #263d39;
+      --muted: #75817b;
+      --white: #ffffff;
     }
 
     * {
@@ -27,17 +30,26 @@
       box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.7;
+    html {
+      scroll-behavior: smooth;
     }
 
-    a { text-decoration: none; color: inherit; }
-    button { font: inherit; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
 
     .container {
       width: min(1120px, 90%);
@@ -50,324 +62,334 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(247, 245, 238, .95);
+      background: rgba(248,247,241,.94);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid #e5e9e1;
     }
 
     nav {
       min-height: 76px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      align-items: center;
+      gap: 24px;
     }
 
     .logo {
-      font-size: 1.45rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 24px;
       font-weight: 800;
       color: var(--teal);
       letter-spacing: -1px;
     }
 
-    .logo span { color: var(--sage-dark); }
+    .logo span {
+      color: var(--sage-dark);
+    }
 
     .nav-links {
       display: flex;
+      gap: 32px;
       align-items: center;
-      gap: 30px;
-      color: var(--muted);
-      font-size: .93rem;
+      font-size: 14px;
+      font-weight: 600;
     }
 
-    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover {
+      color: var(--sage-dark);
+    }
 
-    .nav-button,
-    .button {
-      display: inline-block;
-      padding: 12px 23px;
+    .nav-order {
+      background: var(--teal);
+      color: white;
+      padding: 11px 22px;
+      border-radius: 30px;
+      border: none;
+      font-weight: 600;
+    }
+
+    /* BUTTONS */
+
+    .primary-button,
+    .order-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: var(--teal);
       color: white;
       border: none;
-      border-radius: 30px;
-      font-weight: 600;
-      transition: .2s;
-      cursor: pointer;
+      border-radius: 40px;
+      padding: 14px 27px;
+      font-weight: 700;
+      transition: .25s;
     }
 
-    .nav-button:hover,
-    .button:hover {
-      background: #183b3b;
+    .primary-button:hover,
+    .order-button:hover,
+    .nav-order:hover {
+      background: var(--teal-light);
       transform: translateY(-2px);
+    }
+
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 25px;
+      border: 1px solid var(--teal);
+      border-radius: 40px;
+      color: var(--teal);
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .secondary-button:hover {
+      background: var(--sage);
     }
 
     /* HERO */
 
-    .hero { padding: 85px 0; }
+    .hero {
+      padding: 85px 0;
+      background: linear-gradient(120deg, #f8f7f1 45%, #e6eee4);
+      overflow: hidden;
+    }
 
-    .hero-grid {
+    .hero-content {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
       gap: 55px;
+      align-items: center;
     }
 
     .eyebrow {
+      display: inline-block;
       color: var(--sage-dark);
-      font-size: .78rem;
+      font-size: 12px;
       font-weight: 800;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Manrope', sans-serif;
+      line-height: 1.2;
     }
 
     h1 {
-      font-size: clamp(3rem, 6vw, 5.2rem);
-      line-height: 1.05;
-      letter-spacing: -4px;
+      font-size: clamp(42px, 5.5vw, 68px);
       color: var(--teal);
-      margin: 20px 0;
+      letter-spacing: -2.5px;
+      margin-bottom: 22px;
     }
-
-    h1 span { color: var(--sage-dark); }
 
     .hero-text {
       color: var(--muted);
-      max-width: 490px;
-      font-size: 1.08rem;
+      font-size: 17px;
+      max-width: 470px;
+      margin-bottom: 30px;
     }
 
     .hero-buttons {
       display: flex;
-      flex-wrap: wrap;
       gap: 13px;
-      margin-top: 30px;
+      flex-wrap: wrap;
     }
 
-    .button-outline {
-      display: inline-block;
-      padding: 12px 23px;
-      border: 1px solid var(--line);
-      color: var(--teal);
-      border-radius: 30px;
-      font-weight: 600;
-    }
-
-    .button-outline:hover { background: var(--blue); }
-
-    .order-button {
-      display: inline-block;
-      padding: 13px 25px;
-      background: var(--sage-dark);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .order-button:hover {
-      background: var(--teal);
-      transform: translateY(-2px);
-    }
-
-    .hero-visual {
-      min-height: 480px;
-      border-radius: 48% 48% 25px 25px;
-      background: radial-gradient(circle, #fffefa, #e3ece3 65%, #d7e3df);
+    .hero-image {
+      min-height: 430px;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      background: #e5ece2;
+      border-radius: 38px;
+      padding: 25px;
       position: relative;
-      padding: 30px;
     }
 
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      border: 1px solid rgba(36, 75, 75, .15);
-      border-radius: 50%;
-    }
-
-    .hero-visual img {
-      position: relative;
-      z-index: 1;
+    .hero-image img {
       width: 100%;
-      max-width: 350px;
+      max-width: 380px;
       max-height: 420px;
       object-fit: contain;
-      border-radius: 15px;
-      filter: drop-shadow(0 20px 25px rgba(36, 75, 75, .12));
+      border-radius: 20px;
     }
 
-    .hero-label {
-      position: absolute;
-      z-index: 2;
-      right: 0;
-      bottom: 45px;
-      background: var(--white);
-      padding: 12px 18px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(36, 75, 75, .1);
+    .image-fallback {
+      display: none;
+      text-align: center;
       color: var(--teal);
-      font-size: .85rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 23px;
+      font-weight: 800;
     }
 
     /* GENERAL SECTIONS */
 
-    section { padding: 85px 0; }
+    section {
+      padding: 85px 0;
+    }
 
     .section-heading {
+      text-align: center;
       max-width: 650px;
-      margin-bottom: 40px;
+      margin: 0 auto 48px;
     }
 
     .section-heading h2 {
-      font-size: clamp(2.1rem, 4vw, 3.1rem);
-      line-height: 1.15;
-      letter-spacing: -2px;
       color: var(--teal);
-      margin: 12px 0;
+      font-size: clamp(30px, 4vw, 43px);
+      margin-bottom: 15px;
+      letter-spacing: -1px;
     }
 
-    .section-heading p { color: var(--muted); }
+    .section-heading p {
+      color: var(--muted);
+      font-size: 16px;
+    }
 
     /* BENEFITS */
 
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 22px;
     }
 
     .benefit-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      padding: 30px;
-      border-radius: 22px;
-      transition: .2s;
+      background: white;
+      padding: 34px 27px;
+      border-radius: 23px;
+      border: 1px solid #edf0e9;
+      transition: .25s;
     }
 
-    .benefit-card:hover { transform: translateY(-5px); }
+    .benefit-card:hover {
+      transform: translateY(-5px);
+    }
 
     .benefit-icon {
-      width: 45px;
-      height: 45px;
-      display: grid;
-      place-items: center;
-      background: var(--blue);
-      border-radius: 14px;
-      font-size: 1.3rem;
-      margin-bottom: 22px;
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      background: var(--sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      margin-bottom: 23px;
     }
 
     .benefit-card h3 {
       color: var(--teal);
-      margin-bottom: 10px;
-      font-size: 1.1rem;
+      font-size: 20px;
+      margin-bottom: 12px;
     }
 
     .benefit-card p {
       color: var(--muted);
-      font-size: .94rem;
+      font-size: 14px;
     }
 
     /* HOW IT WORKS */
 
-    .how-section { background: var(--blue); }
+    .how-section {
+      background: var(--blue);
+    }
 
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      gap: 25px;
     }
 
-    .step {
-      border-top: 1px solid rgba(36, 75, 75, .3);
-      padding-top: 20px;
+    .step-card {
+      background: rgba(255,255,255,.75);
+      border-radius: 22px;
+      padding: 32px;
     }
 
     .step-number {
-      color: var(--sage-dark);
-      font-size: .8rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 36px;
       font-weight: 800;
-      letter-spacing: 2px;
+      color: var(--sage-dark);
+      margin-bottom: 15px;
     }
 
-    .step h3 {
+    .step-card h3 {
       color: var(--teal);
-      margin: 12px 0;
+      font-size: 19px;
+      margin-bottom: 12px;
     }
 
-    .step p {
+    .step-card p {
       color: var(--muted);
-      font-size: .94rem;
+      font-size: 14px;
     }
 
     /* PRODUCT */
 
-    .product-section { background: var(--cream-dark); }
-
-    .product-grid {
+    .product-content {
       display: grid;
       grid-template-columns: .9fr 1.1fr;
-      align-items: center;
       gap: 65px;
+      align-items: center;
     }
 
-    .product-image-box {
-      min-height: 390px;
-      background: linear-gradient(145deg, #e4ebe2, #d4e2df);
+    .product-image {
+      background: var(--sage);
       border-radius: 30px;
+      min-height: 390px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       padding: 30px;
     }
 
-    .product-image-box img {
+    .product-image img {
       width: 100%;
-      max-width: 300px;
-      max-height: 360px;
+      max-height: 380px;
       object-fit: contain;
       border-radius: 15px;
     }
 
-    .product-description h2 {
-      font-size: 2.7rem;
+    .product-details h2 {
       color: var(--teal);
-      line-height: 1.15;
-      letter-spacing: -2px;
-      margin: 12px 0 20px;
+      font-size: 39px;
+      margin-bottom: 18px;
     }
 
-    .product-description p {
+    .product-details > p {
       color: var(--muted);
-      margin-bottom: 18px;
+      margin-bottom: 25px;
     }
 
     .feature-list {
       list-style: none;
-      margin: 25px 0;
+      margin-bottom: 28px;
     }
 
     .feature-list li {
-      margin-bottom: 12px;
-      color: var(--ink);
+      padding: 10px 0;
+      border-bottom: 1px solid #e8ebe4;
+      font-size: 15px;
     }
 
     .feature-list li::before {
       content: "✓";
       color: var(--sage-dark);
-      font-weight: bold;
-      margin-right: 10px;
+      font-weight: 800;
+      margin-right: 12px;
     }
 
     /* ABOUT */
 
-    .about-section { text-align: center; }
+    .about-section {
+      background: #e9eee5;
+      text-align: center;
+    }
 
     .about-content {
       max-width: 760px;
@@ -375,41 +397,52 @@
     }
 
     .about-content h2 {
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-size: 39px;
       color: var(--teal);
-      line-height: 1.15;
-      letter-spacing: -2px;
-      margin: 15px 0 20px;
+      margin-bottom: 20px;
     }
 
-    .about-content p { color: var(--muted); }
+    .about-content p {
+      color: var(--muted);
+      font-size: 16px;
+    }
 
     /* CONTACT */
 
-    .cta-section {
-      padding: 75px 0;
+    .contact-section {
+      text-align: center;
       background: var(--teal);
       color: white;
-      text-align: center;
     }
 
-    .cta-section h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
+    .contact-section h2 {
+      font-size: 39px;
       margin-bottom: 15px;
-      letter-spacing: -2px;
     }
 
-    .cta-section p {
-      color: #d6e2dc;
+    .contact-section p {
+      color: #d5e2dd;
       margin-bottom: 28px;
     }
 
-    .cta-section .button {
-      background: var(--cream);
+    .contact-section .primary-button {
+      background: white;
       color: var(--teal);
     }
 
-    .cta-section .button:hover { background: white; }
+    .contact-section .primary-button:hover {
+      background: var(--sage);
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #1c403c;
+      color: #d5e2dd;
+      padding: 25px 0;
+      text-align: center;
+      font-size: 13px;
+    }
 
     /* ORDER MODAL */
 
@@ -418,175 +451,174 @@
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: rgba(25, 59, 59, .65);
+      background: rgba(20, 45, 41, .65);
       padding: 20px;
-      overflow-y: auto;
       align-items: center;
       justify-content: center;
+      overflow-y: auto;
     }
 
-    .order-modal.active { display: flex; }
+    .order-modal.active {
+      display: flex;
+    }
 
     .order-box {
-      width: 100%;
-      max-width: 520px;
       background: var(--cream);
-      border-radius: 24px;
-      padding: 30px;
+      width: 100%;
+      max-width: 490px;
+      border-radius: 25px;
+      padding: 32px;
       position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,.2);
       margin: auto;
     }
 
     .order-box h2 {
       color: var(--teal);
-      font-size: 2rem;
-      margin-bottom: 8px;
+      font-size: 27px;
+      margin-bottom: 7px;
     }
 
-    .order-subtitle {
+    .order-description {
       color: var(--muted);
-      font-size: .9rem;
-      margin-bottom: 22px;
+      font-size: 14px;
+      margin-bottom: 23px;
     }
 
-    .order-close {
+    .close-modal {
       position: absolute;
-      top: 17px;
       right: 20px;
-      background: none;
+      top: 17px;
       border: none;
-      font-size: 1.8rem;
+      background: transparent;
+      font-size: 27px;
       color: var(--teal);
-      cursor: pointer;
     }
 
-    .order-form label {
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
       display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 7px;
       color: var(--teal);
-      font-weight: 650;
-      font-size: .9rem;
-      margin: 14px 0 6px;
     }
 
-    .order-form input,
-    .order-form textarea {
+    .form-group input,
+    .form-group textarea {
       width: 100%;
       padding: 12px 14px;
-      border: 1px solid var(--line);
+      border: 1px solid #dce3d9;
       border-radius: 11px;
-      background: var(--white);
-      color: var(--ink);
+      background: white;
       font: inherit;
+      font-size: 14px;
+      color: var(--text);
       outline: none;
     }
 
-    .order-form input:focus,
-    .order-form textarea:focus {
+    .form-group input:focus,
+    .form-group textarea:focus {
       border-color: var(--sage-dark);
-      box-shadow: 0 0 0 3px rgba(168,185,162,.2);
+      box-shadow: 0 0 0 3px rgba(130,153,130,.12);
     }
 
-    .order-form textarea {
-      min-height: 85px;
+    .form-group textarea {
+      min-height: 80px;
       resize: vertical;
     }
 
     .order-submit {
       width: 100%;
-      margin-top: 22px;
       padding: 14px;
       border: none;
       border-radius: 30px;
       background: var(--teal);
       color: white;
-      font-size: 1rem;
       font-weight: 700;
-      cursor: pointer;
+      margin-top: 7px;
     }
 
-    .order-submit:hover { background: var(--sage-dark); }
+    .order-submit:hover {
+      background: var(--teal-light);
+    }
 
     .order-submit:disabled {
       opacity: .6;
       cursor: wait;
     }
 
-    .order-message {
+    .form-message {
+      font-size: 13px;
       margin-top: 12px;
-      font-size: .88rem;
       text-align: center;
       color: var(--muted);
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 30px 0;
-      background: #193b3b;
-      color: #d6e2dc;
-      font-size: .88rem;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .footer-brand {
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: white;
     }
 
     /* RESPONSIVE */
 
     @media (max-width: 800px) {
-      .hero-grid,
-      .product-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
+      .nav-links {
+        gap: 13px;
+        font-size: 12px;
       }
 
-      .hero { padding: 55px 0; }
-      .hero-visual { min-height: 390px; }
+      .nav-order {
+        display: none;
+      }
+
+      .hero-content,
+      .product-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 55px 0;
+      }
+
+      .hero-image {
+        min-height: 320px;
+      }
 
       .benefits-grid,
       .steps-grid {
         grid-template-columns: 1fr;
       }
 
-      .nav-links {
-        gap: 14px;
-        font-size: .82rem;
+      section {
+        padding: 65px 0;
       }
-
-      .nav-button { display: none; }
     }
 
-    @media (max-width: 480px) {
-      .container { width: 88%; }
-      nav { min-height: 65px; }
-
-      .nav-links { gap: 12px; }
-
-      .nav-links a { font-size: .75rem; }
-      .logo { font-size: 1.2rem; }
-      h1 { letter-spacing: -2px; }
-
-      section { padding: 65px 0; }
-
-      .hero-visual { min-height: 330px; }
-
-      .hero-visual::before {
-        width: 260px;
-        height: 260px;
+    @media (max-width: 500px) {
+      nav {
+        min-height: 65px;
       }
 
-      .order-box { padding: 25px 20px; }
+      .logo {
+        font-size: 20px;
+      }
+
+      .nav-links {
+        gap: 10px;
+        font-size: 11px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-buttons a,
+      .hero-buttons button {
+        width: 100%;
+      }
+
+      .order-box {
+        padding: 25px 20px;
+      }
     }
   </style>
 </head>
@@ -602,316 +634,299 @@
         <div class="nav-links">
           <a href="#home">Home</a>
           <a href="#benefits">Benefits</a>
-          <a href="#how">How It Works</a>
+          <a href="#how-it-works">How It Works</a>
           <a href="#product">Product</a>
         </div>
 
-        <a href="#contact" class="nav-button">Get to Know Us</a>
+        <button class="nav-order" onclick="openOrder()">Order Now</button>
       </nav>
     </div>
   </header>
 
-  <main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">A Simple Breathing Companion</span>
 
-        <div>
-          <div class="eyebrow">A Simple Way to Breathe Better</div>
+        <h1>Breathe better.<br>Feel better.</h1>
 
-          <h1>
-            Breathe better.<br>
-            <span>Feel better.</span>
-          </h1>
-
-          <p class="hero-text">
-            Meet BreathEasy, a simple breathing exercise device
-            designed to help you practice controlled breathing
-            and build a more mindful daily routine.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#product" class="button">Discover BreathEasy</a>
-            <a href="#how" class="button-outline">How It Works</a>
-            <button type="button" class="order-button" onclick="openOrder()">
-              Order Now
-            </button>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <img
-            src="./assets/breatheeasy-product.png"
-            alt="BreathEasy breathing exercise device"
-            onerror="this.style.display='none'; document.getElementById('image-fallback').style.display='flex';"
-          >
-
-          <div id="image-fallback"
-            style="display:none; position:relative; z-index:1; width:220px; height:320px; background:#a8b9a2; border-radius:35px; align-items:center; justify-content:center; text-align:center; padding:25px; color:#244b4b; font-weight:bold;">
-            BreathEasy<br>Product
-          </div>
-
-          <div class="hero-label">
-            Designed for mindful breathing
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- BENEFITS -->
-    <section id="benefits">
-      <div class="container">
-
-        <div class="section-heading">
-          <div class="eyebrow">Why BreathEasy?</div>
-          <h2>Small steps toward mindful breathing.</h2>
-          <p>
-            A practical approach to making breathing exercises
-            easier to understand and practice in everyday life.
-          </p>
-        </div>
-
-        <div class="benefits-grid">
-
-          <div class="benefit-card">
-            <div class="benefit-icon">◎</div>
-            <h3>Simple to Use</h3>
-            <p>
-              A straightforward design that helps users follow
-              a breathing exercise without complicated settings.
-            </p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-icon">◌</div>
-            <h3>Visual Feedback</h3>
-            <p>
-              A visible indicator helps users observe their
-              breathing movement during the exercise.
-            </p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-icon">♡</div>
-            <h3>Everyday Practice</h3>
-            <p>
-              A compact device designed to support a consistent
-              and mindful breathing routine.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="how-section" id="how">
-      <div class="container">
-
-        <div class="section-heading">
-          <div class="eyebrow">How It Works</div>
-          <h2>Three simple steps.</h2>
-          <p>
-            BreathEasy makes breathing practice more interactive
-            through a simple mechanical indicator.
-          </p>
-        </div>
-
-        <div class="steps-grid">
-
-          <div class="step">
-            <div class="step-number">STEP 01</div>
-            <h3>Get Ready</h3>
-            <p>
-              Position the mouthpiece comfortably and prepare
-              yourself for a controlled breathing exercise.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="step-number">STEP 02</div>
-            <h3>Breathe Through It</h3>
-            <p>
-              Follow the breathing exercise by inhaling or
-              exhaling through the device as instructed.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="step-number">STEP 03</div>
-            <h3>Observe the Indicator</h3>
-            <p>
-              Watch the floating ball move inside the transparent
-              indicator tube as you practice breathing.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- PRODUCT -->
-    <section class="product-section" id="product">
-      <div class="container product-grid">
-
-        <div class="product-image-box">
-          <img
-            src="./assets/breatheeasy-product.png"
-            alt="BreathEasy product design"
-          >
-        </div>
-
-        <div class="product-description">
-          <div class="eyebrow">Meet the Product</div>
-
-          <h2>Thoughtfully designed for your breathing routine.</h2>
-
-          <p>
-            BreathEasy combines a compact ergonomic design with
-            a mechanical airflow system and a visual breathing
-            indicator.
-          </p>
-
-          <ul class="feature-list">
-            <li>Compact and ergonomic body</li>
-            <li>Detachable mouthpiece</li>
-            <li>Transparent visual indicator tube</li>
-            <li>Mechanical airflow components</li>
-            <li>Portable and easy to handle</li>
-          </ul>
-
-          <button type="button" class="order-button" onclick="openOrder()">
-            Order Now
-          </button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="about-section" id="about">
-      <div class="container about-content">
-
-        <div class="eyebrow">Our Purpose</div>
-
-        <h2>Making breathing practice more accessible.</h2>
-
-        <p>
-          BreathEasy aims to provide a simple and interactive
-          way to practice controlled breathing. Through its
-          mechanical design and visual feedback, the device
-          encourages users to become more aware of their
-          breathing patterns and develop a mindful routine.
+        <p class="hero-text">
+          Discover a simple way to practice controlled breathing
+          with BreathEasy. Designed to make your breathing exercises
+          easier, more visual, and more accessible.
         </p>
 
+        <div class="hero-buttons">
+          <button class="order-button" onclick="openOrder()">Order Now</button>
+          <a href="#product" class="secondary-button">Explore Product</a>
+        </div>
       </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section class="cta-section" id="contact">
-      <div class="container">
-
-        <h2>Take a moment. Take a breath.</h2>
-
-        <p>
-          Interested in BreathEasy? Let's connect with us
-          and learn more about the product.
-        </p>
-
-        <a
-          href="https://wa.me/62882005792256?text=Halo%20BreathEasy!%20Saya%20tertarik%20untuk%20mengetahui%20lebih%20lanjut%20tentang%20produk%20BreathEasy.%20Boleh%20saya%20mendapatkan%20informasi%20lebih%20detail%3F"
-          class="button"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div class="hero-image">
+        <img
+          src="./assets/breatheeasy-product.png"
+          alt="BreathEasy breathing exercise device"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
         >
-          Contact Us via WhatsApp
-        </a>
+        <div class="image-fallback">BreathEasy</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits">
+    <div class="container">
+
+      <div class="section-heading">
+        <span class="eyebrow">Why BreathEasy?</span>
+        <h2>Make Every Breath Count</h2>
+        <p>
+          A simple and practical companion to support your
+          controlled breathing practice.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🌿</div>
+          <h3>Simple to Use</h3>
+          <p>
+            Designed with a straightforward mechanism so users
+            can practice controlled breathing with ease.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">◉</div>
+          <h3>Visual Feedback</h3>
+          <p>
+            A visual indicator helps users observe their breathing
+            activity during each exercise.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">♡</div>
+          <h3>Everyday Practice</h3>
+          <p>
+            A compact and portable design that makes breathing
+            exercises easier to incorporate into daily routines.
+          </p>
+        </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
 
-  <!-- ORDER FORM MODAL -->
+      <div class="section-heading">
+        <span class="eyebrow">Getting Started</span>
+        <h2>How It Works</h2>
+        <p>
+          Three simple steps to start your breathing exercise.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Prepare</h3>
+          <p>
+            Position the mouthpiece comfortably and get ready
+            to begin your breathing exercise.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Breathe</h3>
+          <p>
+            Follow the recommended breathing technique and
+            practice controlled airflow through the device.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Observe</h3>
+          <p>
+            Watch the visual indicator as you practice and
+            maintain a consistent breathing rhythm.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section id="product">
+    <div class="container product-content">
+
+      <div class="product-image">
+        <img
+          src="./assets/breatheeasy-product.png"
+          alt="BreathEasy product"
+          onerror="this.style.display='none';"
+        >
+      </div>
+
+      <div class="product-details">
+        <span class="eyebrow">Meet the Product</span>
+
+        <h2>Designed for Your Breathing Practice</h2>
+
+        <p>
+          BreathEasy is a compact mechanical breathing exercise
+          device designed to provide a practical and visual
+          breathing experience.
+        </p>
+
+        <ul class="feature-list">
+          <li>Compact and ergonomic body</li>
+          <li>Detachable mouthpiece</li>
+          <li>Transparent visual indicator tube</li>
+          <li>Mechanical airflow components</li>
+          <li>Portable and easy to handle</li>
+        </ul>
+
+        <button class="order-button" onclick="openOrder()">
+          Order Now
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container about-content">
+
+      <span class="eyebrow">Our Purpose</span>
+
+      <h2>Making Breathing Practice More Accessible</h2>
+
+      <p>
+        BreathEasy was developed with the idea of making controlled
+        breathing practice more practical and approachable.
+        Through a simple mechanical design and visual feedback,
+        BreathEasy aims to support users in building consistent
+        breathing exercise habits.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+
+      <h2>Let's Connect!</h2>
+
+      <p>
+        Interested in BreathEasy? Contact us to learn more
+        about the product and ordering information.
+      </p>
+
+      <a
+        class="primary-button"
+        href="https://wa.me/6288233672877?text=Halo%20BreathEasy!%20Saya%20tertarik%20untuk%20mengetahui%20lebih%20lanjut%20tentang%20produk%20BreathEasy.%20Boleh%20saya%20mendapatkan%20informasi%20lebih%20detail%3F"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Contact Us on WhatsApp
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ORDER MODAL -->
   <div class="order-modal" id="orderModal">
+
     <div class="order-box">
 
       <button
         type="button"
-        class="order-close"
+        class="close-modal"
         onclick="closeOrder()"
         aria-label="Close"
       >&times;</button>
 
-      <div class="eyebrow">BreathEasy Order</div>
       <h2>Place Your Order</h2>
 
-      <p class="order-subtitle">
-        Fill in your details to place your BreathEasy order.
+      <p class="order-description">
+        Fill in your details to submit your BreathEasy order.
       </p>
 
-      <form class="order-form" id="orderForm">
+      <form id="orderForm">
 
-        <label for="customerName">Full Name *</label>
-        <input
-          type="text"
-          id="customerName"
-          name="customerName"
-          placeholder="Enter your full name"
-          autocomplete="name"
-          required
-        >
+        <div class="form-group">
+          <label for="customerName">Full Name *</label>
+          <input
+            type="text"
+            id="customerName"
+            name="customerName"
+            placeholder="Enter your full name"
+            required
+          >
+        </div>
 
-        <label for="whatsappNumber">WhatsApp Number *</label>
-        <input
-          type="tel"
-          id="whatsappNumber"
-          name="whatsappNumber"
-          placeholder="Example: 081234567890"
-          autocomplete="tel"
-          required
-        >
+        <div class="form-group">
+          <label for="whatsappNumber">WhatsApp Number *</label>
+          <input
+            type="tel"
+            id="whatsappNumber"
+            name="whatsappNumber"
+            placeholder="Example: 081234567890"
+            required
+          >
+        </div>
 
-        <label for="quantity">Quantity *</label>
-        <input
-          type="number"
-          id="quantity"
-          name="quantity"
-          min="1"
-          step="1"
-          value="1"
-          required
-        >
+        <div class="form-group">
+          <label for="quantity">Quantity *</label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            step="1"
+            value="1"
+            required
+          >
+        </div>
 
-        <label for="address">Shipping Address *</label>
-        <textarea
-          id="address"
-          name="address"
-          placeholder="Enter your complete shipping address"
-          autocomplete="street-address"
-          required
-        ></textarea>
+        <div class="form-group">
+          <label for="address">Shipping Address *</label>
+          <textarea
+            id="address"
+            name="address"
+            placeholder="Enter your complete shipping address"
+            required
+          ></textarea>
+        </div>
 
-        <label for="notes">Additional Notes</label>
-        <textarea
-          id="notes"
-          name="notes"
-          placeholder="Any additional information (optional)"
-        ></textarea>
+        <div class="form-group">
+          <label for="notes">Additional Notes</label>
+          <textarea
+            id="notes"
+            name="notes"
+            placeholder="Optional notes for your order"
+          ></textarea>
+        </div>
 
-        <button
-          type="submit"
-          class="order-submit"
-          id="orderSubmit"
-        >
+        <button type="submit" class="order-submit" id="submitButton">
           Submit Order
         </button>
 
-        <p class="order-message" id="orderMessage" aria-live="polite">
-          Your order details will be recorded in our order database.
-        </p>
+        <p class="form-message" id="formMessage" aria-live="polite"></p>
 
       </form>
     </div>
@@ -919,107 +934,99 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="container footer-content">
-
-      <div class="footer-brand">BreathEasy</div>
-
+    <div class="container">
       <p>© 2026 BreathEasy. All rights reserved.</p>
-
-      <a href="#home">Back to Top ↑</a>
-
     </div>
   </footer>
 
-  <!-- ORDER SYSTEM -->
   <script>
+    // GOOGLE APPS SCRIPT WEB APP URL
     const SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbxKdF8vskxm22gUSfjRmO4tCjsPJN8zCSeKDAJGMOvCaur5QK06Hgb_bSqpt4djezNB/exec";
 
-    const ADMIN_WHATSAPP = "62882005792256";
+    // UPDATED ADMIN WHATSAPP NUMBER
+    const ADMIN_WHATSAPP = "6288233672877";
 
+    // OPEN ORDER MODAL
     function openOrder() {
       document.getElementById("orderModal").classList.add("active");
       document.body.style.overflow = "hidden";
     }
 
+    // CLOSE ORDER MODAL
     function closeOrder() {
       document.getElementById("orderModal").classList.remove("active");
       document.body.style.overflow = "";
     }
 
+    // CLOSE MODAL WHEN CLICKING OUTSIDE
     document.getElementById("orderModal").addEventListener("click", function(e) {
       if (e.target === this) {
         closeOrder();
       }
     });
 
+    // CLOSE MODAL WITH ESCAPE KEY
     document.addEventListener("keydown", function(e) {
       if (e.key === "Escape") {
         closeOrder();
       }
     });
 
+    // SUBMIT ORDER
     document.getElementById("orderForm").addEventListener("submit", async function(e) {
       e.preventDefault();
 
-      const submitButton = document.getElementById("orderSubmit");
-      const message = document.getElementById("orderMessage");
+      const submitButton = document.getElementById("submitButton");
+      const formMessage = document.getElementById("formMessage");
 
-      const customerName =
-        document.getElementById("customerName").value.trim();
-
-      const whatsappNumber =
-        document.getElementById("whatsappNumber").value.trim();
-
-      const quantity =
-        Number(document.getElementById("quantity").value);
-
-      const address =
-        document.getElementById("address").value.trim();
-
-      const notes =
-        document.getElementById("notes").value.trim();
+      const customerName = document.getElementById("customerName").value.trim();
+      const whatsappNumber = document.getElementById("whatsappNumber").value.trim();
+      const quantity = Number(document.getElementById("quantity").value);
+      const address = document.getElementById("address").value.trim();
+      const notes = document.getElementById("notes").value.trim();
 
       if (!customerName || !whatsappNumber || !address) {
-        message.textContent = "Please complete all required fields.";
+        formMessage.textContent = "Please complete all required fields.";
         return;
       }
 
       if (!Number.isInteger(quantity) || quantity < 1) {
-        message.textContent = "Please enter a valid quantity.";
+        formMessage.textContent = "Quantity must be at least 1.";
         return;
       }
 
       const payload = {
-        customerName,
-        whatsappNumber,
-        quantity,
-        address,
-        notes
+        customerName: customerName,
+        whatsappNumber: whatsappNumber,
+        quantity: quantity,
+        address: address,
+        notes: notes
       };
 
-      const whatsappMessage =
-        "Halo BreathEasy! Saya sudah mengisi form pemesanan dengan detail berikut:\n\n" +
-        "Nama: " + customerName + "\n" +
-        "WhatsApp: " + whatsappNumber + "\n" +
-        "Produk: BreathEasy\n" +
-        "Jumlah: " + quantity + "\n" +
-        "Alamat: " + address + "\n" +
-        "Catatan: " + (notes || "Tidak ada") + "\n\n" +
-        "Mohon konfirmasi pesanan saya. Terima kasih!";
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+      formMessage.textContent = "Please wait while your order is being submitted.";
+
+      // Prepare WhatsApp confirmation message
+      const message =
+        "Hello BreathEasy!%0A%0A" +
+        "I have submitted an order through the BreathEasy website.%0A%0A" +
+        "Name: " + encodeURIComponent(customerName) + "%0A" +
+        "WhatsApp: " + encodeURIComponent(whatsappNumber) + "%0A" +
+        "Quantity: " + quantity + "%0A" +
+        "Address: " + encodeURIComponent(address) + "%0A" +
+        "Notes: " + encodeURIComponent(notes || "-") + "%0A%0A" +
+        "Please confirm my order. Thank you!";
 
       const whatsappURL =
-        "https://wa.me/" + ADMIN_WHATSAPP +
-        "?text=" + encodeURIComponent(whatsappMessage);
+        "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + message;
 
-      // Buka tab WhatsApp lebih awal agar tidak diblokir browser
-      const whatsappTab = window.open("about:blank", "_blank");
-
-      submitButton.disabled = true;
-      submitButton.textContent = "Submitting Order...";
-      message.textContent = "Sending your order. Please wait...";
+      // Open WhatsApp tab before sending request to avoid popup blocking
+      const whatsappWindow = window.open("about:blank", "_blank");
 
       try {
+        // Send order to Google Sheets through Apps Script
         await fetch(SCRIPT_URL, {
           method: "POST",
           mode: "no-cors",
@@ -1029,29 +1036,31 @@
           body: JSON.stringify(payload)
         });
 
-        message.textContent =
-          "Order request sent. Please continue to WhatsApp.";
+        // The no-cors response cannot confirm whether the sheet write succeeded.
+        formMessage.textContent =
+          "Order request sent. Please check WhatsApp and confirm your order.";
 
-        if (whatsappTab) {
-          whatsappTab.location.href = whatsappURL;
+        if (whatsappWindow) {
+          whatsappWindow.location.href = whatsappURL;
         } else {
           window.location.href = whatsappURL;
         }
 
-        submitButton.textContent = "Order Request Sent";
+        this.reset();
 
       } catch (error) {
-        if (whatsappTab) {
-          whatsappTab.close();
+        if (whatsappWindow && !whatsappWindow.closed) {
+          whatsappWindow.close();
         }
 
-        message.textContent =
-          "Unable to send your order. Please try again.";
-
-        submitButton.disabled = false;
-        submitButton.textContent = "Submit Order";
+        formMessage.textContent =
+          "Unable to send the order. Please try again or contact us on WhatsApp.";
 
         console.error("Order submission error:", error);
+
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Order";
       }
     });
   </script>
