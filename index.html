@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BreathEasy | A Calmer You in Your Hands</title>
+<style>
+:root {
+  --cream:#F4F2E9;
+  --sage:#DCE7D8;
+  --blue:#DCE9E9;
+  --teal:#28564F;
+  --dark:#183C38;
+  --muted:#697A72;
+  --white:#FFFEFA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--white);
+  color:var(--dark);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.7;
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,90%);margin:auto}
+nav{
+  position:sticky;top:0;z-index:10;
+  background:rgba(255,254,250,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #e6e9df;
+}
+.nav-inner{
+  min-height:76px;display:flex;
+  align-items:center;justify-content:space-between;
+  gap:20px;
+}
+.logo{
+  font-family:Georgia,serif;font-size:29px;
+  font-weight:bold;letter-spacing:-1px;color:var(--dark);
+}
+.logo span{color:#79A598}
+.nav-links{display:flex;gap:25px;font-size:13px}
+.nav-links a:hover{color:#79A598}
+.nav-button,.button{
+  display:inline-block;padding:12px 23px;
+  background:var(--teal);color:white;
+  border-radius:30px;font-size:13px;
+}
+.nav-button:hover,.button:hover{background:var(--dark)}
+.menu{display:none;border:0;background:none;font-size:25px}
+.hero{
+  background:linear-gradient(130deg,var(--cream),#EDF3EC);
+  padding:75px 0;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1.1fr;
+  align-items:center;gap:50px;
+}
+.eyebrow{
+  color:#73958A;font-size:11px;
+  letter-spacing:3px;text-transform:uppercase;
+  font-weight:bold;
+}
+h1{
+  font-family:Georgia,serif;
+  font-size:clamp(48px,6vw,75px);
+  line-height:1.05;font-weight:normal;
+  margin:20px 0;color:var(--dark);
+}
+h1 em{color:#78A395}
+.hero p{color:var(--muted);max-width:470px;margin-bottom:28px}
+.hero-image{
+  background:white;border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 18px 50px #28564f18;
+}
+.hero-image img{width:100%;display:block}
+.button-outline{
+  display:inline-block;padding:11px 22px;
+  border:1px solid #9AB5AA;border-radius:30px;
+  color:var(--teal);font-size:13px;margin-left:8px;
+}
+section{padding:80px 0}
+.section-head{max-width:650px;margin-bottom:35px}
+h2{
+  font-family:Georgia,serif;font-size:clamp(32px,4vw,46px);
+  font-weight:normal;line-height:1.15;
+  margin:12px 0;color:var(--dark);
+}
+.section-head p,.description{color:var(--muted);font-size:15px}
+.about-grid,.product-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:45px;align-items:center;
+}
+.quote{
+  padding:30px;background:var(--sage);
+  border-radius:20px;font-family:Georgia,serif;
+  font-size:27px;color:var(--teal);
+}
+.soft{background:#F0F3EB}
+.blue{background:#EDF3F1}
+.cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.card{
+  padding:27px;background:white;
+  border:1px solid #e6eae2;border-radius:20px;
+}
+.card .symbol{
+  font-size:25px;color:#739B8D;
+  margin-bottom:15px;
+}
+.card h3{font-size:17px;margin-bottom:9px}
+.card p{font-size:13px;color:var(--muted)}
+.steps{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.step{
+  background:var(--white);padding:25px;
+  border-radius:20px;border:1px solid #e7eae2;
+}
+.number{
+  font-family:Georgia,serif;
+  font-size:35px;color:#83A99B;
+  margin-bottom:15px;
+}
+.step p{font-size:13px;color:var(--muted)}
+.product-image img{
+  width:100%;border-radius:22px;
+  display:block;background:white;
+}
+.feature{display:flex;gap:13px;margin:18px 0}
+.check{
+  width:25px;height:25px;flex-shrink:0;
+  background:var(--sage);border-radius:50%;
+  display:grid;place-items:center;color:var(--teal);
+}
+.feature small{color:var(--muted)}
+.impact{
+  padding:27px;border-radius:20px;
+  background:var(--sage);
+}
+.impact:nth-child(2){background:var(--blue)}
+.impact:nth-child(3){background:#EFF0E6}
+.impact h3{
+  font-family:Georgia,serif;font-size:25px;
+  margin-bottom:12px;
+}
+.impact p{font-size:13px;color:var(--muted)}
+.contact-box{
+  background:var(--dark);color:white;
+  padding:45px;border-radius:25px;
+  display:flex;align-items:center;
+  justify-content:space-between;gap:25px;
+}
+.contact-box h2{color:white;max-width:550px}
+.contact-box p{color:#CBD9D2;max-width:520px}
+.contact-box .button{background:var(--sage);color:var(--dark)}
+footer{
+  background:var(--cream);padding:28px 0;
+  color:var(--muted);font-size:12px;
+}
+.footer-inner{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:15px;flex-wrap:wrap;
+}
+footer strong{font-family:Georgia,serif;font-size:22px;color:var(--dark)}
+@media(max-width:800px){
+  .nav-links{
+    display:none;position:absolute;top:76px;left:0;right:0;
+    background:white;padding:20px;flex-direction:column;
+  }
+  .nav-links.open{display:flex}
+  .menu{display:block}
+  .nav-button{display:none}
+  .hero-grid,.about-grid,.product-grid{grid-template-columns:1fr}
+  .cards,.steps{grid-template-columns:1fr}
+  section{padding:60px 0}
+  .contact-box{flex-direction:column;align-items:flex-start;padding:30px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#home" class="logo">Breath<span>Easy</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#product">Product</a>
+      <a href="#how">How It Works</a>
+      <a href="#impact">Impact</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#product" class="nav-button">Explore Product</a>
+    <button class="menu" id="menuBtn">☰</button>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">A calmer you in your hands</div>
+      <h1>Take a breath.<br><em>Find your calm.</em></h1>
+      <p>
+        Kenali BreathEasy, alat bantu latihan napas
+        fisik non-digital yang dirancang untuk membantu
+        pengguna mengikuti ritme hembusan napas
+        secara perlahan dan terarah.
+      </p>
+      <a class="button" href="#product">Discover BreathEasy</a>
+      <a class="button-outline" href="#how">How it works</a>
+    </div>
+    <div class="hero-image">
+      <img src="assets/breatheeasy-product.png"
+           alt="Produk BreathEasy">
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container about-grid">
+    <div>
+      <div class="eyebrow">01 — About Us</div>
+      <h2>A little pause can make a difference.</h2>
+      <p class="description">
+        Situasi seperti ujian dan wawancara dapat
+        menimbulkan kecemasan. Napas yang menjadi
+        cepat dan pendek terkadang sulit dikendalikan,
+        terutama ketika seseorang sedang panik.
+      </p>
+      <p class="description" style="margin-top:15px">
+        BreathEasy dikembangkan sebagai alternatif
+        alat bantu latihan napas yang praktis,
+        diskret, dan tidak bergantung pada gawai.
+      </p>
+    </div>
+    <div class="quote">
+      "A calmer you, in your hands."
+    </div>
+  </div>
+</section>
+
+<section class="soft" id="product">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">02 — Our Product</div>
+      <h2>Simple design. Thoughtful function.</h2>
+      <p>
+        BreathEasy menggabungkan mekanisme aliran
+        udara dan indikator bola visual dalam
+        perangkat genggam yang ringkas.
+      </p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="symbol">◉</div>
+        <h3>Visual Indicator</h3>
+        <p>
+          Bola indikator memberikan umpan balik
+          visual selama proses latihan napas.
+        </p>
+      </article>
+      <article class="card">
+        <div class="symbol">≈</div>
+        <h3>Controlled Airflow</h3>
+        <p>
+          Airflow insert dirancang untuk memberikan
+          tahanan pada hembusan napas.
+        </p>
+      </article>
+      <article class="card">
+        <div class="symbol">↻</div>
+        <h3>Detachable Design</h3>
+        <p>
+          Komponen modular dirancang agar dapat
+          dilepas untuk pemeriksaan dan pembersihan.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">03 — How It Works</div>
+      <h2>Three simple steps.</h2>
+      <p>
+        Kenali gambaran awal penggunaan BreathEasy.
+      </p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="number">01</div>
+        <h3>Position</h3>
+        <p>
+          Pastikan komponen terpasang dengan benar
+          dan mouthpiece dalam keadaan bersih.
+        </p>
+      </article>
+      <article class="step">
+        <div class="number">02</div>
+        <h3>Exhale Slowly</h3>
+        <p>
+          Hembuskan napas melalui mouthpiece
+          secara perlahan dan stabil tanpa memaksakan.
+        </p>
+      </article>
+      <article class="step">
+        <div class="number">03</div>
+        <h3>Follow the Ball</h3>
+        <p>
+          Amati pergerakan bola indikator sebagai
+          umpan balik visual selama ekshalasi.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="blue">
+  <div class="container product-grid">
+    <div>
+      <div class="eyebrow">04 — Product Innovation</div>
+      <h2>Mechanical by design. Digital-free by choice.</h2>
+      <p class="description">
+        BreathEasy menggunakan mekanisme fisik
+        tanpa baterai maupun layar elektronik.
+        Desainnya berfokus pada pengalaman penggunaan
+        yang sederhana.
+      </p>
+      <div class="feature">
+        <span class="check">✓</span>
+        <div><b>Non-electronic</b><br>
+        <small>Tanpa baterai dan layar.</small></div>
+      </div>
+      <div class="feature">
+        <span class="check">✓</span>
+        <div><b>Visual Feedback</b><br>
+        <small>Indikator bola yang dapat diamati.</small></div>
+      </div>
+      <div class="feature">
+        <span class="check">✓</span>
+        <div><b>Compact Design</b><br>
+        <small>Dimensi rancangan awal sekitar 12 cm.</small></div>
+      </div>
+    </div>
+    <div class="product-image">
+      <img src="assets/breatheeasy-product.png"
+           alt="Detail produk BreathEasy">
+    </div>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">05 — Our Impact</div>
+      <h2>Designed with purpose.</h2>
+      <p>
+        Pengembangan BreathEasy mempertimbangkan
+        potensi dampak pada tiga aspek.
+      </p>
+    </div>
+    <div class="cards">
+      <article class="impact">
+        <h3>Social</h3>
+        <p>
+          Mendukung alternatif latihan napas yang
+          lebih diskret dan meningkatkan kesadaran
+          terhadap pengelolaan kecemasan.
+        </p>
+      </article>
+      <article class="impact">
+        <h3>Economic</h3>
+        <p>
+          Membuka peluang pengembangan produk
+          wellness dan kolaborasi dengan vendor
+          serta industri lokal.
+        </p>
+      </article>
+      <article class="impact">
+        <h3>Environmental</h3>
+        <p>
+          Konsep tanpa baterai dan elektronik
+          mengurangi kebutuhan komponen elektronik.
+          Daya tahan tetap perlu diuji.
+        </p>
+      </article>
+    </div>
+    <p style="font-size:11px;color:#78867f;margin-top:18px">
+      Catatan: Dampak dan performa merupakan potensi
+      pengembangan, bukan klaim hasil pengujian
+      atau manfaat medis yang telah terbukti.
+      BreathEasy bukan pengganti bantuan profesional.
+    </p>
+  </div>
+</section>
+
+<section class="soft" id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <div>
+        <div class="eyebrow" style="color:#a9c9bd">06 — Get in Touch</div>
+        <h2>Let's take a breath together.</h2>
+        <p>
+          Tertarik mengenal BreathEasy lebih jauh?
+          Hubungi tim kami untuk informasi,
+          pertanyaan, atau peluang kolaborasi.
+        </p>
+      </div>
+      <a class="button"
+         href="mailto:EMAIL-TIM-KAMU?subject=Informasi%20BreathEasy">
+         Contact Us ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <strong>BreathEasy</strong>
+    <span>Napas Teratur, Pikiran Lebih Tenang.</span>
+    <span>© 2026 BreathEasy</span>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+  });
+});
+</script>
+</body>
+</html>
