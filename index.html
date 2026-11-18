@@ -98,8 +98,6 @@
       font-weight: 600;
     }
 
-    /* ACTIVE NAVIGATION HIGHLIGHT */
-
     .nav-links a {
       padding: 9px 15px;
       border-radius: 20px;
@@ -694,7 +692,7 @@
     <div class="container">
       <nav>
         <a href="#home" class="logo" aria-label="BreathEasy Home">
-          <img src="./assets/breatheeasy-logo.jpeg" alt="BreathEasy">
+          <img src="./assets/breatheeasy-logo.png" alt="BreathEasy">
         </a>
 
         <div class="nav-links">
@@ -1110,7 +1108,6 @@
       submitButton.textContent = "Submitting...";
       formMessage.textContent = "Please wait while your order is being submitted.";
 
-      // PREPARE WHATSAPP CONFIRMATION MESSAGE
       const message =
         "Hello BreathEasy!%0A%0A" +
         "I have submitted an order through the BreathEasy website.%0A%0A" +
@@ -1124,11 +1121,9 @@
       const whatsappURL =
         "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + message;
 
-      // OPEN WHATSAPP TAB BEFORE SENDING REQUEST
       const whatsappWindow = window.open("about:blank", "_blank");
 
       try {
-        // SEND ORDER TO GOOGLE SHEETS THROUGH APPS SCRIPT
         await fetch(SCRIPT_URL, {
           method: "POST",
           mode: "no-cors",
@@ -1138,7 +1133,6 @@
           body: JSON.stringify(payload)
         });
 
-        // NO-CORS CANNOT CONFIRM WHETHER THE SHEET WRITE SUCCEEDED
         formMessage.textContent =
           "Order request sent. Please check WhatsApp and confirm your order.";
 
@@ -1166,7 +1160,7 @@
       }
     });
 
-    // ACTIVE NAVIGATION HIGHLIGHT WHILE SCROLLING
+    // ACTIVE NAVIGATION HIGHLIGHT
 
     const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -1203,16 +1197,12 @@
       sectionObserver.observe(section);
     });
 
-    // HIGHLIGHT MENU IMMEDIATELY WHEN CLICKED
-
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         const targetId = link.getAttribute('href').substring(1);
         setActiveLink(targetId);
       });
     });
-
-    // INITIAL ACTIVE SECTION
 
     setActiveLink('home');
 
