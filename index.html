@@ -32,6 +32,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
     body {
@@ -76,27 +77,44 @@
     }
 
     .logo {
-      font-family: 'Manrope', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--teal);
-      letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
     }
 
-    .logo span {
-      color: var(--sage-dark);
+    .logo img {
+      display: block;
+      height: 48px;
+      width: auto;
+      max-width: 190px;
+      object-fit: contain;
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 12px;
       align-items: center;
       font-size: 14px;
       font-weight: 600;
     }
 
-    .nav-links a:hover {
-      color: var(--sage-dark);
+    /* ACTIVE NAVIGATION HIGHLIGHT */
+
+    .nav-links a {
+      padding: 9px 15px;
+      border-radius: 20px;
+      transition: all .25s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--teal);
+      background: var(--sage);
+    }
+
+    .nav-links a.active {
+      font-weight: 700;
     }
 
     .nav-order {
@@ -327,6 +345,36 @@
     .step-card p {
       color: var(--muted);
       font-size: 14px;
+    }
+
+    /* HOW TO USE VIDEO */
+
+    .video-section {
+      background: #e9eee5;
+    }
+
+    .tutorial-video {
+      width: 100%;
+      max-width: 850px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--teal);
+      box-shadow: 0 12px 35px rgba(36,79,75,.12);
+    }
+
+    .tutorial-video video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
+    .video-caption {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     /* PRODUCT */
@@ -560,9 +608,20 @@
     /* RESPONSIVE */
 
     @media (max-width: 800px) {
+      nav {
+        flex-wrap: wrap;
+        padding: 12px 0;
+      }
+
       .nav-links {
-        gap: 13px;
+        gap: 5px;
         font-size: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-links a {
+        padding: 7px 10px;
       }
 
       .nav-order {
@@ -597,13 +656,18 @@
         min-height: 65px;
       }
 
-      .logo {
-        font-size: 20px;
+      .logo img {
+        height: 40px;
+        max-width: 155px;
       }
 
       .nav-links {
-        gap: 10px;
+        gap: 3px;
         font-size: 11px;
+      }
+
+      .nav-links a {
+        padding: 6px 8px;
       }
 
       .hero-buttons {
@@ -629,12 +693,15 @@
   <header>
     <div class="container">
       <nav>
-        <a href="#home" class="logo">Breath<span>Easy</span></a>
+        <a href="#home" class="logo" aria-label="BreathEasy Home">
+          <img src="./assets/breatheeasy-logo.jpeg" alt="BreathEasy">
+        </a>
 
         <div class="nav-links">
           <a href="#home">Home</a>
           <a href="#benefits">Benefits</a>
           <a href="#how-it-works">How It Works</a>
+          <a href="#tutorial">How to Use</a>
           <a href="#product">Product</a>
         </div>
 
@@ -764,6 +831,41 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- HOW TO USE VIDEO -->
+  <section class="video-section" id="tutorial">
+    <div class="container">
+
+      <div class="section-heading">
+        <span class="eyebrow">BREATH EASY GUIDE</span>
+        <h2>How to Use BreathEasy</h2>
+        <p>
+          Watch this simple tutorial to learn how to use
+          BreathEasy during your breathing exercise.
+        </p>
+      </div>
+
+      <div class="tutorial-video">
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          poster="./assets/breatheeasy-product.png"
+        >
+          <source
+            src="./assets/breatheeasy-tutorial.mp4"
+            type="video/mp4"
+          >
+          Your browser does not support video playback.
+        </video>
+      </div>
+
+      <p class="video-caption">
+        Follow the instructions and enjoy your breathing practice.
+      </p>
+
     </div>
   </section>
 
@@ -944,7 +1046,7 @@
     const SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbxKdF8vskxm22gUSfjRmO4tCjsPJN8zCSeKDAJGMOvCaur5QK06Hgb_bSqpt4djezNB/exec";
 
-    // UPDATED ADMIN WHATSAPP NUMBER
+    // ADMIN WHATSAPP NUMBER
     const ADMIN_WHATSAPP = "6288233672877";
 
     // OPEN ORDER MODAL
@@ -1008,7 +1110,7 @@
       submitButton.textContent = "Submitting...";
       formMessage.textContent = "Please wait while your order is being submitted.";
 
-      // Prepare WhatsApp confirmation message
+      // PREPARE WHATSAPP CONFIRMATION MESSAGE
       const message =
         "Hello BreathEasy!%0A%0A" +
         "I have submitted an order through the BreathEasy website.%0A%0A" +
@@ -1022,11 +1124,11 @@
       const whatsappURL =
         "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + message;
 
-      // Open WhatsApp tab before sending request to avoid popup blocking
+      // OPEN WHATSAPP TAB BEFORE SENDING REQUEST
       const whatsappWindow = window.open("about:blank", "_blank");
 
       try {
-        // Send order to Google Sheets through Apps Script
+        // SEND ORDER TO GOOGLE SHEETS THROUGH APPS SCRIPT
         await fetch(SCRIPT_URL, {
           method: "POST",
           mode: "no-cors",
@@ -1036,7 +1138,7 @@
           body: JSON.stringify(payload)
         });
 
-        // The no-cors response cannot confirm whether the sheet write succeeded.
+        // NO-CORS CANNOT CONFIRM WHETHER THE SHEET WRITE SUCCEEDED
         formMessage.textContent =
           "Order request sent. Please check WhatsApp and confirm your order.";
 
@@ -1063,6 +1165,57 @@
         submitButton.textContent = "Submit Order";
       }
     });
+
+    // ACTIVE NAVIGATION HIGHLIGHT WHILE SCROLLING
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const pageSections = document.querySelectorAll(
+      '#home, #benefits, #how-it-works, #tutorial, #product'
+    );
+
+    function setActiveLink(sectionId) {
+      navLinks.forEach(link => {
+        link.classList.toggle(
+          'active',
+          link.getAttribute('href') === '#' + sectionId
+        );
+      });
+    }
+
+    const sectionObserver = new IntersectionObserver(
+      entries => {
+        const visibleSections = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleSections.length > 0) {
+          setActiveLink(visibleSections[0].target.id);
+        }
+      },
+      {
+        rootMargin: '-15% 0px -65% 0px',
+        threshold: [0, 0.1, 0.25, 0.5]
+      }
+    );
+
+    pageSections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    // HIGHLIGHT MENU IMMEDIATELY WHEN CLICKED
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const targetId = link.getAttribute('href').substring(1);
+        setActiveLink(targetId);
+      });
+    });
+
+    // INITIAL ACTIVE SECTION
+
+    setActiveLink('home');
+
   </script>
 
 </body>
